@@ -26,7 +26,7 @@ title: ThyCyrix's Blog                          # the main title
 tagline: Ethical Hacking   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  Ethiccal Hacking.
+  Ethical Hacking.
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://thycyrix.github.io'
@@ -35,7 +35,7 @@ github:
   username: thycyrix             # change to your github username
 
 twitter:
-  username:             # change to your twitter username
+  username: thycyrix            # change to your twitter username
 
 social:
   # Change to your full name.
@@ -44,7 +44,7 @@ social:
   email:              # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
+    - https://twitter.com/thycyrix      # change to your twitter homepage
     - https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
@@ -83,7 +83,7 @@ theme_mode:   # [light|dark]
 img_cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar:
+avatar: 'https://api.accredible.com/v1/frontend/credential_website_embed_image/badge/58846697'
 
 # boolean type, the global switch for ToC in posts.
 toc: true
